@@ -47,6 +47,11 @@ namespace PokerMania
 					}
 				}
 			}
+			else
+			{
+				// Invalid number of hands of poker requested
+				return null;
+			}
 
 			return hands;
 		}		

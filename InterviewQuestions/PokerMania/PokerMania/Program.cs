@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,13 +15,37 @@ namespace PokerMania
 
 			List<PokerHand> hands = new List<PokerHand>();
 
-			int NumberOfHands = 5;
-			hands = dealer.dealHands(NumberOfHands);
+			int NumberOfHands = 0;
 
-			for(int i = 0; i < hands.Count; i++)
+			Console.Write("How many Players (Enter a number between 1 - 7)? ");
+			TextReader userIn = Console.In;
+
+			String userCount = userIn.ReadLine();
+
+			if (Int32.TryParse(userCount,out NumberOfHands))
+			{ 
+				hands = dealer.dealHands(NumberOfHands);
+
+				if (hands != null)
+				{
+					Console.WriteLine("***************************");
+
+					for (int i = 0; i < hands.Count; i++)
+					{
+						Console.WriteLine("Hand #" + (i + 1).ToString());
+						hands[i].printHand();
+					}
+				}
+				else
+				{
+					// Invalid number of poker hands were requested
+					Console.WriteLine("Invalid number of players specified.");
+				}
+			}
+			else
 			{
-				Console.WriteLine("Hand #" + (i + 1).ToString());
-				hands[i].printHand();
+				// User provided invalid input
+				Console.WriteLine("Invalid Input.");
 			}
 		}
 	}
