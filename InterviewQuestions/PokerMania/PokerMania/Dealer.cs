@@ -6,22 +6,36 @@ using System.Threading.Tasks;
 
 namespace PokerMania
 {
+	/// <summary>
+	/// Dealer class handles shuffling and dealing cards from a DeckOfCards object
+	/// </summary>
 	public class Dealer
 	{
 		private const int HANDSIZE = 5;
-		private DeckOfCards _deck;
 
+		private DeckOfCards _deck;
+		/// <summary>
+		/// The remaining Deck of cards
+		/// </summary>
 		public DeckOfCards Deck
 		{
 			get { return _deck; }
 			set { _deck = value; }
 		}
 
+		/// <summary>
+		/// Dealer Constructor
+		/// </summary>
 		public Dealer()
 		{
 			Deck = new DeckOfCards();
 		}
 
+		/// <summary>
+		/// Shuffles the Deck and returns the number of hands of cards requested
+		/// </summary>
+		/// <param name="numHands"></param>
+		/// <returns>A list of PokerHands or null if there is a problem</returns>
 		public List<PokerHand> dealHands(int numHands)
 		{
 			// Shuffle the deck of cards by the number of players

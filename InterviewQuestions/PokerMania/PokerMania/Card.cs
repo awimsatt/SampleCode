@@ -32,10 +32,13 @@ namespace PokerMania
 	}
 
 	/// <summary>
-	/// A standard card with a suit and a value
+	/// Card class defines a card with a suit and a value
 	/// </summary>
 	public class Card
 	{
+		/// <summary>
+		/// The Card Suit
+		/// </summary>
 		private CardSuits _suit;
 		public CardSuits Suit
 		{
@@ -43,6 +46,9 @@ namespace PokerMania
 			set { _suit = value; }
 		}
 
+		/// <summary>
+		/// The Card Value
+		/// </summary>
 		private CardValues _value;
 		public CardValues Value
 		{

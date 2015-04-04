@@ -6,18 +6,26 @@ using System.Threading.Tasks;
 
 namespace PokerMania
 {
+	/// <summary>
+	/// DeckOfCards class contains methods for managing a deck of 52 cards.
+	/// </summary>
 	public class DeckOfCards
 	{
 		private const int DECKSIZE = 52;
 
 		private List<Card> _deck;
-
+		/// <summary>
+		/// The deck of cards
+		/// </summary>
 		public List<Card> Deck
 		{
 			get { return _deck; }
 			set { _deck = value; }
 		}
 
+		/// <summary>
+		/// Constructor initializes the deck of cards ordered by suit and value
+		/// </summary>
 		public DeckOfCards()
 		{
 			// Initialize the deck
@@ -35,10 +43,16 @@ namespace PokerMania
 			}
 		}
 
+		/// <summary>
+		/// Shuffles the deck of cards the number of times specified by numRepeat. The numRepeat parameter must be greater than 0.
+		/// </summary>
+		/// <param name="numRepeat"></param>
+		/// <returns>true if shuffle was successful and false if there was problem</returns>
 		public bool shuffle(int numRepeat)
 		{
-			if (Deck.Count == DECKSIZE)
+			if (Deck.Count == DECKSIZE && numRepeat > 0)
 			{
+				// split the deck in half just like a person would if shuffling physical cards by hand.
 				int splitDeck = Deck.Count / 2;
 				for (int i = 0; i < numRepeat; i++)
 				{
@@ -55,12 +69,16 @@ namespace PokerMania
 			}
 			else
 			{
-				// Deck is not full, shuffle not allowed
+				// Deck is not full or numRepeat was not greater than 0, shuffle not allowed
 				return false;
 			}
 			return true;
 		}
 
+		/// <summary>
+		/// Returns the top card of the deck and removes it from the deck
+		/// </summary>
+		/// <returns>The top card of the deck</returns>
 		public Card getTopCard()
 		{
 			Card topCard = new Card();
@@ -78,6 +96,9 @@ namespace PokerMania
 			return topCard;
 		}
 
+		/// <summary>
+		/// Resets the deck back to its initial state of ordered cards by suit and value
+		/// </summary>
 		public void resetDeck()
 		{
 			Deck.Clear();
@@ -94,6 +115,9 @@ namespace PokerMania
 			}
 		}
 
+		/// <summary>
+		/// Prints the deck of cards to the Console
+		/// </summary>
 		public void printDeck()
 		{
 			foreach (Card c in Deck)
