@@ -68,7 +68,7 @@ namespace PokerMania
 
 			string output = sb.ToString();
 			// remove extra dash from the output
-			output = output.Substring(0, output.Length - 4);
+			output = output.Substring(0, output.Length - 3);
 
 			Console.WriteLine(output + "\n");
 		}

@@ -62,8 +62,8 @@ namespace PokerMania
 						int a = r.Next(DECKSIZE - 1);
 						int b = r.Next(DECKSIZE - 1);
 						Card tempCard = Deck[a];
-						Deck[b] = Deck[a];
-						Deck[a] = tempCard;
+						Deck[a] = Deck[b];
+						Deck[b] = tempCard;
 					}
 				}
 			}
